@@ -57,4 +57,9 @@ public class HomeController {
     public String loginForm(Model model, RedirectAttributes redirectAttributes) {   
         return "login";
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/login")
+    public String loginForm2(Model model, RedirectAttributes redirectAttributes) {   
+        return "redirect:https://github.com/login/oauth/authorize?client_id=bf2eab10400e706f32ac";
+    }
 }

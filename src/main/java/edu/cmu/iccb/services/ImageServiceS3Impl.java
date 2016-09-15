@@ -62,7 +62,10 @@ public class ImageServiceS3Impl implements ImageService {
 				
 		PutObjectRequest putObjectRequest = new PutObjectRequest(bucket, imageId, inputStream, new ObjectMetadata());
 
-		putObjectRequest.setCannedAcl(CannedAccessControlList.PublicRead);
+		//putObjectRequest.setCannedAcl(CannedAccessControlList.PublicRead);
+	//ObjectMetadata objectMetadata = new ObjectMetadata();
+
+	//objectMetadata.setSSEAlgorithm(ObjectMetadata.AES_256_SERVER_SIDE_ENCRYPTION); 
 
 		PutObjectResult putObjectResult = amazonS3Client.putObject(putObjectRequest);
 
