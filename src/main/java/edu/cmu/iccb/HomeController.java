@@ -1,19 +1,26 @@
-//Maki Okuda
+//Modified by Maki Okuda
+//Cloud Computing for Business: HW2
+
 package edu.cmu.iccb;
 
-
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 
 import edu.cmu.iccb.services.ImageService;
+
 
 @Controller
 public class HomeController {
@@ -53,12 +60,23 @@ public class HomeController {
         return "redirect:/images";
     }
 
-    
+    //Added for HW2 to provide user authentication via github
+    @RequestMapping(method = RequestMethod.GET, value = "/login/success")
+    public String githubLoginSuccess(RedirectAttributes redirectAttributes, String accessToken) {
+        PreAuthenticatedAuthenticationToken auth = new PreAuthenticatedAuthenticationToken
+        											("github", accessToken,
+        											 Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+        SecurityContextHolder.getContext().setAuthentication(auth);
+        
+        return "redirect:/images";
+    }
+   
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String loginForm(Model model, RedirectAttributes redirectAttributes) {   
         return "login";
     }
 
+    //Added for HW2 to provide user authentication via github
     @RequestMapping(method = RequestMethod.GET, value = "/login")
     public String loginForm2(Model model, RedirectAttributes redirectAttributes) {   
         return "redirect:https://github.com/login/oauth/authorize?client_id=bf2eab10400e706f32ac";
