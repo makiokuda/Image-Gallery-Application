@@ -61,6 +61,7 @@ public class HomeController {
     }
 
     //Added for HW2 to provide user authentication via github
+    //Reference:https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/java/org/springframework/security/oauth2/client/token/AccessTokenProviderChainTests.java
     @RequestMapping(method = RequestMethod.GET, value = "/login/success")
     public String githubLoginSuccess(RedirectAttributes redirectAttributes, String accessToken) {
         PreAuthenticatedAuthenticationToken auth = new PreAuthenticatedAuthenticationToken
@@ -77,6 +78,7 @@ public class HomeController {
     }
 
     //Added for HW2 to provide user authentication via github
+    //Reference: code provided by professor (in above code block) 
     @RequestMapping(method = RequestMethod.GET, value = "/login")
     public String loginForm2(Model model, RedirectAttributes redirectAttributes) {   
         return "redirect:https://github.com/login/oauth/authorize?client_id=bf2eab10400e706f32ac";
