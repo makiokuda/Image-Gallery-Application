@@ -1,6 +1,6 @@
 ---
 applications:
-- name: image-gallery-hw3-makiokuda
+- name: image-gallery-hw5-makiokuda
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   path: ./build/libs/image-gallery-0.1.0.jar
   
