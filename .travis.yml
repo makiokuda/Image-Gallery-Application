@@ -1,4 +1,14 @@
----
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
+edge: true
+deploy:
+  provider: cloudfoundry
+  api: https://api.run.pivotal.io
+  username: mokuda@andrew.cmu.edu
+  password:
+    secure: TNfOhZ23HmEvopRmNuen44Q/wru0+Zx63YcgGfpqcZV8COtMOxqb6Vqra4ya4YYJR8Ohjm/jfFX9cZCeUkWHquo4E07/o09o1SxyNBfxLAADL8t8Fa9vdTe1pOvoKUbrxUzhg2qHYsWwe9f1b1sMv+DYo66PZ2mieOA4Ow1bab9RSkHjp6p35cWOHjCO9lfCs6eBFyxft315SCs1rInMDVLhf/FCLcpMz1y4BFvnEj82f2FKeMD3MdrkgmGLBFUKl9p9pAb0MfSLEhlrUXWTdD8QUVkks+J17emhgGmrl6hbElF14x3+iMMtNvVZ4pmayDsqncs2N6sPPWLoCHfD1IwqtMn0R24qgmRIEfl5lsO2H9VWRzLhsp11crJYMI1/szKwskFM9OGepHywVKXX1RxxMIB7E8Cb8GRhPCk4PZt+kEx3y/LFz5dBIalh2FHErZwDbzfSJpdRYC/J3V6eZp85MQDijmGwV1KeTCt7TNcghek9BZFmGCOY4AmNT41t1K52EZ/Wj9SPTN9ZxKHEzO9IdMQErci0UwzLPGwp2tLzUKwtc9PRz6Ob6EJa8JFAK/Y9dUEuhtaMXroUbgAgQI1UWQ5kl1Lk8+eH+Wba6tRWslZ4fw9U85Fo8/xuRJHs8fP11JDzBQD+kMAP3EVE6NxVtmu6dRrLbwtePi5Gk0A=
+  organization: CarnegieMellonUniversity
+  space: development
+  on:
+    repo: makiokuda/Image-Gallery-Application
